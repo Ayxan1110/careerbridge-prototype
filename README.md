@@ -2,7 +2,7 @@
 
 An AI career coach for **international students in Latvia**. This is a front-end prototype built for a university startup pitch. It uses **demo data only**: there is no backend and no real AI call. All companies, jobs and sources are fictional, and every `example.com` link is a placeholder.
 
-The demo student is Aykhan Dadashov, an Information Systems student at ISMA in Riga, originally from Azerbaijan, working as a software developer.
+The demo student is Aykhan Dadashov, an Information Systems student at RNU in Riga, originally from Azerbaijan, working as a software developer.
 
 ## The problem
 
