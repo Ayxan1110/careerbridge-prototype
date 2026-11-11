@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerBridge | AI career coach for international students in Latvia</title>
+  <meta name="description" content="CareerBridge is a clickable prototype of an AI career coach that helps international students in Latvia find part-time and graduate jobs. Demo data only.">
+  <meta name="theme-color" content="#0b7d70">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%232547d0'/%3E%3Cpath d='M7 27h26M9 27C9 17 15 12 20 12s11 5 11 15' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="logo-mark" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="11" fill="currentColor"/>
+      <path d="M9 27C9 17.5 14.5 12 20 12s11 5.5 11 15" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M14.2 27v-9.5M20 27V14.5M25.8 27v-9.5" stroke="#fff" stroke-width="1.9" stroke-linecap="round" opacity=".8"/>
+      <path d="M6.5 27.2h27" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>
+      <path d="M11 32.2h18" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity=".45"/>
+    </symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cv" viewBox="0 0 24 24"><path d="M6 3.5h8.5L19 8v12.5H6zM14 3.5V8.5h5M9 13.5l2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-jobs" viewBox="0 0 24 24"><path d="M4 8h16v11H4zM9 8V5.5h6V8M4 13h16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M5 20.5V4.5h9v16M14 9.5h5v11M3.5 20.5h17M8 8h3M8 12h3M8 16h3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h16v10.5H10.5L6 20v-4H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-5.6 6.5-11a6.5 6.5 0 0 0-13 0C5.5 15.4 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9zM18.5 16l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" fill="currentColor"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-5 16-3.5-6.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.3-2.9 7.6-7 9-4.1-1.4-7-4.7-7-9V6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="proto-badge" role="note">Prototype &middot; demo data</div>
+
+  <header class="topbar">
+    <a class="brand" href="#dashboard" aria-label="CareerBridge home">
+      <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span class="brand-word">Career<b>Bridge</b></span>
+    </a>
+  </header>
+
+  <aside class="sidebar">
+    <a class="brand" href="#dashboard" aria-label="CareerBridge home">
+      <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span class="brand-word">Career<b>Bridge</b></span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <a class="nav-link" href="#dashboard" data-nav="dashboard"><svg aria-hidden="true"><use href="#i-home"/></svg><span>Dashboard</span></a>
+      <a class="nav-link" href="#cv" data-nav="cv"><svg aria-hidden="true"><use href="#i-cv"/></svg><span>CV Check</span></a>
+      <a class="nav-link" href="#jobs" data-nav="jobs"><svg aria-hidden="true"><use href="#i-jobs"/></svg><span>Jobs</span></a>
+      <a class="nav-link" href="#brief" data-nav="brief"><svg aria-hidden="true"><use href="#i-building"/></svg><span>Company brief</span></a>
+      <a class="nav-link" href="#interview" data-nav="interview"><svg aria-hidden="true"><use href="#i-chat"/></svg><span>Interview Coach</span></a>
+    </nav>
+
+    <div class="student">
+      <span class="avatar" aria-hidden="true">AD</span>
+      <div>
+        <p class="student-name">Aykhan Dadashov</p>
+        <p class="student-meta">Information Systems, ISMA &middot; Riga</p>
+      </div>
+    </div>
+  </aside>
+
+  <main id="main" class="main">
+
+    <!-- ============ DASHBOARD ============ -->
+    <section class="screen" id="screen-dashboard" aria-labelledby="h-dashboard" hidden>
+      <header class="page-head">
+        <p class="eyebrow">Wednesday &middot; Riga</p>
+        <h1 id="h-dashboard" tabindex="-1">Hi, Aykhan</h1>
+        <p class="lede">Your four career agents worked on your search today. Here is where you stand and what to do next.</p>
+      </header>
+
+      <div class="grid dash-top">
+        <article class="card readiness" aria-labelledby="h-readiness">
+          <h2 id="h-readiness" class="card-title">Career readiness</h2>
+          <div class="readiness-body">
+            <div class="ring-wrap">
+              <div class="ring" id="readiness-ring" role="img" aria-label="Career readiness score"><div class="ring-inner"><strong id="readiness-score">0</strong><span>out of 100</span></div></div>
+              <p class="ring-label" id="readiness-label">Getting there</p>
+            </div>
+            <ul class="metric-list" id="metric-list" aria-label="Readiness breakdown"></ul>
+          </div>
+          <p class="note" id="readiness-note"></p>
+        </article>
+
+        <article class="card profile" aria-labelledby="h-profile">
+          <h2 id="h-profile" class="card-title">Profile completeness</h2>
+          <div class="profile-id">
+            <span class="avatar avatar-lg" aria-hidden="true">AD</span>
+            <div>
+              <p class="profile-name">Aykhan Dadashov</p>
+              <p class="muted">IS student at ISMA &middot; Software developer &middot; from Azerbaijan</p>
+            </div>
+          </div>
+          <div class="progress-row">
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="82" aria-label="Profile completeness"><span style="width:82%"></span></div>
+            <strong>82%</strong>
+          </div>
+          <ul class="mini-list">
+            <li class="is-done"><svg aria-hidden="true"><use href="#i-check"/></svg>Education and experience added</li>
+            <li class="is-done"><svg aria-hidden="true"><use href="#i-check"/></svg>Skills and English level added</li>
+            <li class="is-todo"><span class="dot" aria-hidden="true"></span>Add your Latvian level (A1 is fine)</li>
+            <li class="is-todo"><span class="dot" aria-hidden="true"></span>Add a GitHub or portfolio link</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="grid dash-mid">
+        <article class="card" aria-labelledby="h-steps">
+          <h2 id="h-steps" class="card-title">Next steps</h2>
+          <ol class="steps" id="steps"></ol>
+        </article>
+
+        <article class="card tip" aria-labelledby="h-permit">
+          <div class="tip-icon" aria-hidden="true"><svg><use href="#i-shield"/></svg></div>
+          <h2 id="h-permit" class="card-title">Work rules for students</h2>
+          <p class="muted">In Latvia, how much you may work depends on your residence permit. Check the basics before you accept an offer.</p>
+          <ul class="mini-list tip-list">
+            <li class="is-done"><svg aria-hidden="true"><use href="#i-check"/></svg>Signed contract before day one</li>
+            <li class="is-done"><svg aria-hidden="true"><use href="#i-check"/></svg>Hours within your permit limit</li>
+            <li class="is-done"><svg aria-hidden="true"><use href="#i-check"/></svg>Employer registers the job</li>
+          </ul>
+          <button type="button" class="btn btn-secondary" id="permit-toggle" aria-expanded="false" aria-controls="permit-panel">Read the 1-minute guide</button>
+          <div id="permit-panel" class="permit-panel" hidden>
+            <ul>
+              <li>Study permit holders can usually take part-time work next to their studies. Ask your university for the exact hour limit.</li>
+              <li>Your employer registers the job with the authorities. Never start before you have a signed contract.</li>
+              <li>Graduates need a new permit route to stay and work after the degree.</li>
+            </ul>
+            <p class="fine">Demo content only. Always confirm with your university and the Office of Citizenship and Migration Affairs (PMLP).</p>
+          </div>
+        </article>
+      </div>
+
+      <section aria-labelledby="h-agents" class="agents-section">
+        <div class="section-head">
+          <h2 id="h-agents">Your AI team today</h2>
+          <p class="muted">Four specialised agents. They work together, you stay in control.</p>
+        </div>
+        <div class="grid agents" id="agents"></div>
+      </section>
+    </section>
+
+    <!-- ============ CV CHECK ============ -->
+    <section class="screen" id="screen-cv" aria-labelledby="h-cv" hidden>
+      <header class="page-head">
+        <p class="eyebrow">CV Agent</p>
+        <h1 id="h-cv" tabindex="-1">CV Check</h1>
+        <p class="lede">Paste your CV, pick a target job and get an ATS and match score, plus bullet points rewritten for that role.</p>
+      </header>
+
+      <div class="cv-layout">
+        <form class="card cv-form" id="cv-form" novalidate aria-labelledby="h-cv-form">
+          <h2 id="h-cv-form" class="card-title">Your CV</h2>
+          <div class="field">
+            <label for="cv-job">Target job</label>
+            <select id="cv-job"></select>
+          </div>
+          <div class="field">
+            <label for="cv-text">CV text <span class="hint">(sample pre-filled, edit freely)</span></label>
+            <textarea id="cv-text" rows="18" spellcheck="false"></textarea>
+            <p class="field-error" id="cv-error" role="alert" hidden>Paste your CV text first, then run the analysis.</p>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="cv-analyze"><svg aria-hidden="true"><use href="#i-spark"/></svg>Analyze</button>
+            <button type="button" class="btn btn-ghost" id="cv-reset">Reset sample</button>
+          </div>
+        </form>
+
+        <div class="cv-output" aria-live="polite">
+          <div class="card empty" id="cv-empty">
+            <svg class="empty-icon" aria-hidden="true"><use href="#i-cv"/></svg>
+            <h2 class="card-title">Your results appear here</h2>
+            <p class="muted">The CV Agent checks the structure against what recruiters in Latvia expect, compares keywords with the job ad and rewrites weak bullet points.</p>
+          </div>
+
+          <div class="card thinking" id="cv-thinking" hidden>
+            <h2 class="card-title"><span class="spinner" aria-hidden="true"></span>CV Agent is working</h2>
+            <p class="sr-only" id="cv-thinking-status" role="status"></p>
+            <ol class="think-steps" id="cv-think-steps"></ol>
+            <div class="progress progress-lg" aria-hidden="true"><span id="cv-think-bar" style="width:0%"></span></div>
+          </div>
+
+          <div id="cv-results" hidden>
+            <article class="card score-card" aria-labelledby="h-score">
+              <h2 id="h-score" class="card-title">Score for <span id="cv-job-name"></span></h2>
+              <div class="score-pair">
+                <div class="score-block">
+                  <div class="ring ring-sm" id="cv-ring-before" role="img" aria-label="Current score"><div class="ring-inner"><strong id="cv-score-before">0</strong></div></div>
+                  <p>Now</p>
+                </div>
+                <svg class="score-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                <div class="score-block">
+                  <div class="ring ring-sm ring-good" id="cv-ring-after" role="img" aria-label="Score after fixes"><div class="ring-inner"><strong id="cv-score-after">0</strong></div></div>
+                  <p>After fixes</p>
+                </div>
+                <div class="score-copy">
+                  <p class="score-delta" id="cv-delta"></p>
+                  <p class="muted" id="cv-score-text"></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="card" aria-labelledby="h-issues">
+              <h2 id="h-issues" class="card-title">Issues and suggestions</h2>
+              <ul class="issues" id="cv-issues"></ul>
+            </article>
+
+            <article class="card" aria-labelledby="h-rewrite">
+              <h2 id="h-rewrite" class="card-title">Bullet points rewritten</h2>
+              <div id="cv-rewrites" class="rewrites"></div>
+              <p class="fine">AI suggestions use placeholder numbers. Replace them with results that are true for you before you apply.</p>
+              <div class="form-actions">
+                <button type="button" class="btn btn-primary" id="cv-apply">Apply all fixes to my CV</button>
+                <button type="button" class="btn btn-secondary" id="cv-to-jobs">Back to jobs</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOBS ============ -->
+    <section class="screen" id="screen-jobs" aria-labelledby="h-jobs" hidden>
+      <header class="page-head">
+        <p class="eyebrow">Job Scout Agent</p>
+        <h1 id="h-jobs" tabindex="-1">Jobs in Riga</h1>
+        <p class="lede">Scanned 214 postings this morning. These 8 fit a student schedule. All companies are fictional.</p>
+      </header>
+
+      <div class="filters" role="group" aria-label="Filter jobs">
+        <button type="button" class="chip" data-filter="english" aria-pressed="false">English OK</button>
+        <button type="button" class="chip" data-filter="parttime" aria-pressed="false">Part-time</button>
+        <button type="button" class="chip" data-filter="flex" aria-pressed="false">Remote or hybrid</button>
+        <button type="button" class="chip" data-filter="junior" aria-pressed="false">Junior or intern</button>
+        <button type="button" class="chip" data-filter="match" aria-pressed="false">80%+ match</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="filters-reset" hidden>Clear filters</button>
+      </div>
+      <p class="result-count" id="job-count" role="status"></p>
+
+      <div class="grid jobs" id="job-list"></div>
+      <div class="card empty" id="job-empty" hidden>
+        <h2 class="card-title">No jobs match all filters</h2>
+        <p class="muted">Try removing one filter. The Job Scout Agent keeps looking and will tell you when new postings arrive.</p>
+      </div>
+    </section>
+
+    <!-- ============ COMPANY BRIEF ============ -->
+    <section class="screen" id="screen-brief" aria-labelledby="h-brief" hidden>
+      <header class="page-head">
+        <p class="eyebrow">Company Research Agent</p>
+        <h1 id="h-brief" tabindex="-1">Company brief</h1>
+        <p class="lede">A short cited brief to read before you apply or interview. Every claim points to a numbered source.</p>
+      </header>
+
+      <div class="card thinking" id="brief-thinking" hidden>
+        <h2 class="card-title"><span class="spinner" aria-hidden="true"></span>Company Research Agent is reading sources</h2>
+        <p class="muted">Asking questions from three points of view: applicant, hiring manager, current employee.</p>
+        <div class="progress progress-lg" aria-hidden="true"><span id="brief-bar" style="width:0%"></span></div>
+      </div>
+
+      <div class="brief-layout" id="brief-content" hidden>
+        <article class="brief" aria-labelledby="h-company">
+          <div class="brief-hero card">
+            <span class="logo-tile" id="brief-tile" aria-hidden="true"></span>
+            <div>
+              <h2 id="h-company"></h2>
+              <p class="muted" id="brief-sub"></p>
+            </div>
+          </div>
+
+          <section class="card" aria-labelledby="b-overview">
+            <h3 id="b-overview">Overview</h3>
+            <p id="brief-overview"></p>
+          </section>
+          <section class="card" aria-labelledby="b-products">
+            <h3 id="b-products">Products</h3>
+            <ul id="brief-products"></ul>
+          </section>
+          <section class="card" aria-labelledby="b-culture">
+            <h3 id="b-culture">Culture and hiring</h3>
+            <p id="brief-culture"></p>
+            <p id="brief-hiring"></p>
+          </section>
+          <section class="card" aria-labelledby="b-questions">
+            <h3 id="b-questions">Likely interview questions</h3>
+            <ol id="brief-questions"></ol>
+          </section>
+          <section class="card sources" aria-labelledby="b-sources">
+            <h3 id="b-sources">Sources</h3>
+            <ol id="brief-sources"></ol>
+            <p class="fine">Placeholder example.com links. In the real product these would be live pages the agent actually read.</p>
+          </section>
+        </article>
+
+        <aside class="brief-side" aria-label="Brief details">
+          <div class="card">
+            <h3 class="card-title">Quick facts</h3>
+            <dl class="facts" id="brief-facts"></dl>
+          </div>
+          <div class="card">
+            <h3 class="card-title">How this was researched</h3>
+            <p class="muted">The agent asked 12 questions as three different people, then merged the answers.</p>
+            <ul class="perspectives">
+              <li><b>Applicant</b> What will the job really involve?</li>
+              <li><b>Hiring manager</b> Who do they hire and why?</li>
+              <li><b>Employee</b> What is it like day to day?</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" id="brief-to-interview">Practise this interview<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button type="button" class="btn btn-secondary btn-block" id="brief-to-cv">Tailor my CV for this job</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ INTERVIEW ============ -->
+    <section class="screen" id="screen-interview" aria-labelledby="h-interview" hidden>
+      <header class="page-head">
+        <p class="eyebrow">Interview Coach Agent</p>
+        <h1 id="h-interview" tabindex="-1">Interview Coach</h1>
+        <p class="lede">Four questions, one at a time. After each answer you get short feedback and scores for clarity, relevance and STAR structure.</p>
+      </header>
+
+      <div class="chat-layout">
+        <section class="card chat" aria-label="Mock interview chat">
+          <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" aria-label="Conversation"></div>
+          <form class="chat-form" id="chat-form" novalidate>
+            <label for="chat-input" class="sr-only">Your answer</label>
+            <textarea id="chat-input" rows="3" placeholder="Type your answer. Enter to send, Shift+Enter for a new line."></textarea>
+            <div class="chat-actions">
+              <button type="button" class="btn btn-secondary" id="chat-sample">Use sample answer</button>
+              <button type="submit" class="btn btn-primary" id="chat-send">Send<svg aria-hidden="true"><use href="#i-send"/></svg></button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="chat-side" aria-label="Interview progress">
+          <div class="card">
+            <h2 class="card-title">Mock interview</h2>
+            <p class="muted" id="iv-context"></p>
+            <p class="iv-progress" id="iv-progress"></p>
+            <ol class="iv-steps" id="iv-steps"></ol>
+          </div>
+          <div class="card">
+            <h2 class="card-title">How you are scored</h2>
+            <dl class="legend">
+              <dt>Clarity</dt><dd>Short, structured, easy to follow</dd>
+              <dt>Relevance</dt><dd>Answers what was asked, uses job keywords</dd>
+              <dt>STAR</dt><dd>Situation, Task, Action, Result</dd>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
